@@ -1,0 +1,15 @@
+{
+  "name": "optim",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "JT <jt@gosquared.com>",
+  "dependencies": {
+    "async": "^1.5.0",
+    "imagemin": "^3.2.0",
+    "imagemin-optipng": "^4.3.0"
+  },
+  "devDependencies": {
+    "node-lambda": "^0.7.1"
+  }
+}
