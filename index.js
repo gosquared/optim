@@ -21,6 +21,9 @@ exports.optim = function(event, context) {
 
   key = require('querystring').parse('a=' + key).a;
 
+  console.log('BUCKET: ' + bucket);
+  console.log('KEY: ' + key);
+
   async.waterfall([
     function(cb){
       s3.headObject({ Bucket: bucket, Key: key }, function(err, data) {
@@ -31,9 +34,13 @@ exports.optim = function(event, context) {
           return cb('skip');
         }
 
-        if(data.ContentLength && skipSize !== -1 && data.ContentLength > skipSize){
-          console.log('Image is larger than configured threshold. Skipping.');
-          return cb('skip');
+        if(data.ContentLength){
+          console.log('File size is ' + data.ContentLength + ' bytes');
+
+          if(skipSize !== -1 && data.ContentLength > skipSize){
+            console.log('Image is larger than configured threshold. Skipping.');
+            return cb('skip');
+          }
         }
 
         cb(null, data);
@@ -44,7 +51,7 @@ exports.optim = function(event, context) {
       s3.getObject({ Bucket: bucket, Key: key }, function(err, data) {
         if(err) return cb(err);
 
-        console.log('Got object. Size is %s', data.Body.length);
+        console.log('Got object.');
         cb(null, meta, data);
       });
     },
@@ -55,6 +62,8 @@ exports.optim = function(event, context) {
         .use(optipng({ optimizationLevel: pngLevel }))
         .run(function(err, files){
           if(err) return cb(err);
+
+          console.log('Optimized! Final file size is ' + files[0].contents.length + ' bytes');
 
           cb(null, meta, obj, files[0])
         });
