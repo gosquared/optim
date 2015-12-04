@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Automatically optimise images on S3 using AWS Lambda",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gosquared/optim.git"
+  },
   "license": "MIT",
   "author": "JT <jt@gosquared.com>",
   "scripts": {
