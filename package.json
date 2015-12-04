@@ -1,8 +1,9 @@
 {
   "name": "optim",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Automatically optimise images on S3 using AWS Lambda",
   "main": "index.js",
+  "license": "MIT",
   "author": "JT <jt@gosquared.com>",
   "scripts": {
     "deploy": "node-lambda deploy"
