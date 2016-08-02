@@ -14,10 +14,11 @@
   },
   "dependencies": {
     "async": "^1.5.0",
-    "imagemin": "^3.2.0",
-    "imagemin-optipng": "^4.3.0"
+    "imagemin": "^5.2.0",
+    "imagemin-optipng": "^5.1.0",
+    "imagemin-jpegoptim": "^5.0.0"
   },
   "devDependencies": {
-    "node-lambda": "^0.7.1"
+    "node-lambda": "^0.8.6"
   }
 }
